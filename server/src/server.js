@@ -35,6 +35,9 @@ app.get("/", (req, res)=>{
 });
 
 // Start server
-app.listen(PORT, ()=>{
-    console.log(`Server is running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(5000, () => console.log("Server running"));
+}
+
+
+export default app;
