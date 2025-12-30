@@ -17,7 +17,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "*"
+}));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -34,10 +36,11 @@ app.get("/", (req, res)=>{
     });
 });
 
-// Start server
-if (process.env.NODE_ENV !== "production") {
-  app.listen(5000, () => console.log("Server running"));
-}
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
 
 
 export default app;
